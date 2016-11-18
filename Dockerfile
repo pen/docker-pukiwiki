@@ -13,4 +13,7 @@ RUN cd /var \
 
 COPY rootfs /
 
+VOLUME ["/ext"]
+EXPOSE 80
+
 CMD ["/etc/rc.entry"]
