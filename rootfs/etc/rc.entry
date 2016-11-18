@@ -5,6 +5,7 @@ cd /var/www
 target=/ext/data
 mkdir -p $target
 for dir in `find * -perm 777 -maxdepth 0`; do
+    [[ -L $dir ]] && continue
     [[ -d $target/$dir ]] || mv $dir $target
     rm -rf $dir
     ln -s $target/$dir
