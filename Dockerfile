@@ -11,7 +11,12 @@ RUN cd /var \
  && unzip -q $WIKI && rm $WIKI.zip \
  && rm -rf www && mv $WIKI www
 
-COPY rootfs /
+RUN cd /var/www \
+ && mkdir -p .bak/conf .bak/data \
+ && for i in `find * -maxdepth 0 -name '*.ini.php'`; do mv $i .bak/conf/; ln -s /ext/conf/$i; done \
+ && for i in `find * -maxdepth 0 -type d -perm 777`; do mv $i .bak/data/; ln -s /ext/data/$i; done
+
+COPY ["rootfs", "/"]
 
 VOLUME ["/ext"]
 EXPOSE 80

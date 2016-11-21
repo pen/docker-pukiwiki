@@ -1,22 +1,6 @@
 #!/bin/sh
 
-cd /var/www
-
-target=/ext/data
-mkdir -p $target
-for dir in `find * -perm 777 -maxdepth 0`; do
-    [[ -L $dir ]] && continue
-    [[ -d $target/$dir ]] || mv $dir $target
-    rm -rf $dir
-    ln -s $target/$dir
-done
-
-target=/ext/conf
-mkdir -p $target
-for file in `ls *.ini.php`; do
-    [[ -f $target/$file ]] || mv $file $target
-    ln -sf $target/$file
-done
+yes no | cp -ai /var/www/.bak/* /ext/ >/dev/null
 
 php-fpm
 nginx -g "daemon off;"
