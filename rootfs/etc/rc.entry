@@ -2,5 +2,5 @@
 
 yes no | cp -ai /var/www/.bak/* /ext/ >/dev/null
 
-php-fpm
+php-fpm7
 nginx -g "daemon off;"
