@@ -1,7 +1,15 @@
 --- a/www/lib/func.php
 +++ b/www/lib/func.php
-@@ -619,3 +619,3 @@
- 		$script  = (SERVER_PORT == 443 ? 'https://' : 'http://'); // scheme
+@@ -618,5 +618,9 @@
+
+-		$script  = (SERVER_PORT == 443 ? 'https://' : 'http://'); // scheme
 -		$script .= SERVER_NAME;	// host
-+		$script .= $_SERVER['HTTP_HOST'] ?? SERVER_NAME;          // host
- 		$script .= (SERVER_PORT == 80 ? '' : ':' . SERVER_PORT);  // port
+-		$script .= (SERVER_PORT == 80 ? '' : ':' . SERVER_PORT);  // port
++		if ($_SERVER['VIRTUAL_HOST']) {
++			$script = $_SERVER['VIRTUAL_HOST'];
++		} else {
++			$script  = (SERVER_PORT == 443 ? 'https://' : 'http://'); // scheme
++			$script .= $_SERVER['HTTP_HOST'] ?? SERVER_NAME;          // host
++			$script .= (SERVER_PORT == 80 ? '' : ':' . SERVER_PORT);  // port
++		}
+
