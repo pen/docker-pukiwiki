@@ -6,6 +6,7 @@ RUN apk add -U --virtual .builders \
 
 RUN apk add \
             h2o \
+            perl \
             php7-cgi
 
 COPY rootfs /
