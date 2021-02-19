@@ -2,7 +2,7 @@
 
 ## Description
 
-[PukiWiki 1.5.2 Unicode版](https://ja.osdn.net/projects/pukiwiki/downloads/69652/pukiwiki-1.5.2_utf8.zip/)をalpineとh2oで構成したもの。
+[PukiWiki 1.5.3 Unicode版](https://ja.osdn.net/projects/pukiwiki/downloads/72656/pukiwiki-1.5.3_utf8.zip/)をalpineとh2oで構成したもの。
 
 ## インストール
 
