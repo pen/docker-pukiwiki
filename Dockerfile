@@ -3,8 +3,8 @@ FROM busybox AS builder
 ARG dir="72656"
 ARG name="pukiwiki-1.5.3_utf8"
 
-RUN wget "http://iij.dl.osdn.jp/pukiwiki/${dir}/${name}.zip"
-RUN unzip "${name}.zip"
+RUN wget "http://iij.dl.osdn.jp/pukiwiki/$dir/$name.zip"
+RUN unzip "$name.zip"
 RUN mv ${name} pukiwiki
 
 WORKDIR /pukiwiki
@@ -15,8 +15,8 @@ RUN for i in `find * -maxdepth 0 -type d -perm 2777`; do mv $i .orig/data/; ln -
 
 
 FROM alpine:latest
-LABEL maintainer "Abe Masahiro <pen@thcomp.org>"
-LABEL org.opencontainers.image.source https://github.com/pen/docker-pukiwiki
+LABEL org.opencontainers.image.authors="Abe Masahiro <pen@thcomp.org>" \
+    org.opencontainers.image.source="https://github.com/pen/docker-pukiwiki"
 
 RUN apk add --no-cache \
             h2o \
