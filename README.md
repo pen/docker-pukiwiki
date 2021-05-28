@@ -8,8 +8,8 @@
 
 ```shell
 mkdir $HOME/pukiwiki
-docker run -p 10080:80 -v $HOME/pukiwiki:/ext -d pengo/pukiwiki
-open http://localhost:10080
+docker run -p 8080:80 -v $HOME/pukiwiki:/ext -d pengo/pukiwiki
+open http://localhost:8080
 ```
 
 ディレクトリに既にデータがあるときは上書きしない。
