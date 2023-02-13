@@ -1,7 +1,7 @@
 FROM busybox:1.36 AS builder
 
-ARG dir="72656"
-ARG name="pukiwiki-1.5.3_utf8"
+ARG dir="77082"
+ARG name="pukiwiki-1.5.4_utf8"
 
 RUN wget "http://iij.dl.osdn.jp/pukiwiki/$dir/$name.zip"
 RUN unzip "$name.zip"
