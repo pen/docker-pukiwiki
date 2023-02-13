@@ -1,4 +1,4 @@
-FROM busybox AS builder
+FROM busybox:1.36 AS builder
 
 ARG dir="72656"
 ARG name="pukiwiki-1.5.3_utf8"
@@ -14,14 +14,14 @@ RUN for i in `find * -maxdepth 0 -name '*.ini.php'`; do mv $i .orig/conf/; ln -s
 RUN for i in `find * -maxdepth 0 -type d -perm 2777`; do mv $i .orig/data/; ln -s /ext/data/$i; done
 
 
-FROM alpine:latest
+FROM alpine:3.17
 LABEL org.opencontainers.image.authors="Abe Masahiro <pen@thcomp.org>" \
     org.opencontainers.image.source="https://github.com/pen/docker-pukiwiki"
 
 RUN apk add --no-cache \
             h2o \
             perl \
-            php7-cgi
+            php-cgi
 
 COPY --from=builder /pukiwiki /var/www
 COPY rootfs /
