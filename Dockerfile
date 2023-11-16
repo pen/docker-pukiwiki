@@ -1,8 +1,9 @@
-FROM busybox:1.36 AS builder
+FROM alpine:3.18 AS builder
 
 ARG tag="r1_5_4"
 
-RUN wget "https://github.com/pukiwiki/pukiwiki/archive/refs/tags/$tag.zip"
+RUN apk update && apk add curl unzip
+RUN curl -LO "https://github.com/pukiwiki/pukiwiki/archive/refs/tags/$tag.zip"
 RUN unzip "$tag.zip"
 RUN mv "pukiwiki-$tag" pukiwiki
 
