@@ -1,11 +1,10 @@
 FROM busybox:1.36 AS builder
 
-ARG dir="77082"
-ARG name="pukiwiki-1.5.4_utf8"
+ARG tag="r1_5_4"
 
-RUN wget "http://iij.dl.osdn.jp/pukiwiki/$dir/$name.zip"
-RUN unzip "$name.zip"
-RUN mv ${name} pukiwiki
+RUN wget "https://github.com/pukiwiki/pukiwiki/archive/refs/tags/$tag.zip"
+RUN unzip "$tag.zip"
+RUN mv "pukiwiki-$tag" pukiwiki
 
 WORKDIR /pukiwiki
 RUN rm -f *.txt *.zip
